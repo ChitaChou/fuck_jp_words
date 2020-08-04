@@ -1,0 +1,4 @@
+Flask_Cors>=3.0.7
+Flask>=1.0.3
+requests>=2.22.0
+certifi
