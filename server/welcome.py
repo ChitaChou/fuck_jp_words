@@ -16,6 +16,20 @@ CORS(app, resources=r'/*')
 # Author: Chita Chou
 # env: Python 3.6.5 (Anaconda3 5.2.0) Win x64
 
+# 分组数据对象类，用于快速映射生成json对象
+class group_obj:
+    def __init__(self, group_id, group_name, add_datetime, upd_datetime):
+        self.group_id = group_id
+        self.group_name = group_name
+        self.add_datetime = add_datetime
+        self.upd_datetime = upd_datetime
+
+# 工具类：时间戳转换日期文本
+def util_timestamp_2_date(timestamp):
+    timeArray = time.localtime(int(timestamp))
+    formatTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
+    return formatTime
+
 @app.route("/", methods=['GET'])
 def index():
     return send_file('static/index.html')
@@ -38,6 +52,18 @@ def add_group():
             conn.commit()
             conn.close()
             return "add_success"
+
+# 获取全部词汇分组
+@app.route("/group", methods=['GET'])
+def get_group():
+    sql = 'SELECT group_id, group_name, add_datetime, upd_datetime FROM "group"'
+    conn = sqlite3.connect('data/core.db')
+    c = conn.cursor()
+    cursor = c.execute(sql)
+    data_groups = []
+    for row in cursor:
+        data_groups.append(json.loads(json.dumps(group_obj(row[0], row[1], util_timestamp_2_date(row[2]), util_timestamp_2_date(row[3])).__dict__, ensure_ascii=True)))
+    return json.dumps(data_groups)
 
 if __name__ == '__main__':
     app.secret_key = os.urandom(24)
