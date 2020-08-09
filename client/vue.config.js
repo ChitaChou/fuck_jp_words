@@ -9,12 +9,12 @@ module.exports = {
   assetsDir: "static",
   devServer: {
     proxy: {
-      "/api_test": {
-        target: process.env.VUE_APP_API_SERVER,
+      "/api": {
+        target: 'http://localhost:8000',
         changeOrigin: true,
         ws: true,
         pathRewrite: {
-          "^/api_test": "/mock"
+          "^/api": "/api"
         }
       }
     },

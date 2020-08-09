@@ -1,5 +1,5 @@
-
 import Menu from "@/views/Menu"
+import Words from "@/views/Words"
 
 export const pagesRoutes = [
   
@@ -15,5 +15,11 @@ export default [
     name: "Home",
     hidden: true,
     component: Menu
+  },
+  {
+    path: "/words",
+    name: "Words",
+    hidden: true,
+    component: Words
   }
 ];

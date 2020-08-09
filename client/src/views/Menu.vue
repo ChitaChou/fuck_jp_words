@@ -41,7 +41,7 @@
 				<div class="icon"><img src="../assets/image/history.png" height="80%" width="80%" alt=""></div>
 				<div class="text">考试历史</div>
 			</div>
-			<div class="btn" @click="goUserManagement">
+			<div class="btn" @click="goWordsManagement">
 				<div class="icon"><img src="../assets/image/words.png" height="80%" width="80%" alt=""></div>
 				<div class="text">单词管理</div>
 			</div>
@@ -88,9 +88,9 @@ export default {
 				path: "/",
 			});
 		},
-		goUserManagement(){
+		goWordsManagement(){
 			this.$router.push({
-				path: "/admin/users",
+				path: "/words",
 			});
 		},
 		goAreaManagement() {
