@@ -200,8 +200,8 @@ def create_exam():
         conn.close()
         return "words_group_error"
 
-# 提交小题
-# 参数(json)
+# 批量提交小题
+# 参数(json array)
 # 1. test_id (考试ID,必须)
 # 2. words_id (单词ID，必须)
 # 3. answer (答案，必须)
@@ -209,17 +209,18 @@ def create_exam():
 def upd_answer():
     if request.get_data(as_text=True) != '':
         para_json_obj = json.loads(request.get_data(as_text=True))
-        if ("test_id" not in para_json_obj or "words_id" not in para_json_obj or "answer" not in para_json_obj):
+        if (len(para_json_obj) < 0):
             return "parameter_missing"
         else:
             ans_time = int(time.time())
-            sql_upd = 'UPDATE "main"."test_record" SET "answer" = \'' + str(para_json_obj["answer"]) + '\', "ans_datetime" = '+ str(ans_time) +' WHERE "test_id" = '+ str(para_json_obj["test_id"]) +' AND "words_id" = '+ str(para_json_obj["words_id"])
             conn = sqlite3.connect('data/core.db')
             c = conn.cursor()
             try:
-                cursor = c.execute(sql_upd)
+                for item in para_json_obj:
+                    sql_upd = 'UPDATE "main"."test_record" SET "answer" = \'' + str(item["answer"]) + '\', "ans_datetime" = '+ str(ans_time) +' WHERE "test_id" = '+ str(item["test_id"]) +' AND "words_id" = '+ str(item["words_id"])
+                    c.execute(sql_upd)
                 conn.commit()
-                if conn.total_changes != 0:
+                if conn.total_changes != len(para_json_obj):
                     return "ans_success"
                 else:
                     return "ans_error"
