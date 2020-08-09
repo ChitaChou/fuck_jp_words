@@ -45,7 +45,7 @@
 				<div class="icon"><img src="../assets/image/words.png" height="80%" width="80%" alt=""></div>
 				<div class="text">单词管理</div>
 			</div>
-			<div class="btn" @click="goAreaManagement">
+			<div class="btn" @click="goGroupManagement">
 				<div class="icon"><img src="../assets/image/group.png" height="80%" width="80%" alt=""></div>
 				<div class="text">单词分组管理</div>
 			</div>
@@ -93,9 +93,9 @@ export default {
 				path: "/words",
 			});
 		},
-		goAreaManagement() {
+		goGroupManagement() {
 			this.$router.push({
-				path: "/admin/areas",
+				path: "/groups",
 			});
 		},
 		goTempScan() {
