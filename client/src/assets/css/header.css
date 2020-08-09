@@ -1,0 +1,345 @@
+/*head-top*/
+
+.head-top {
+	width: 1200px;
+	padding: 0 50px;
+	position: relative;
+	left: -50px;
+	/*background-color: #eee;*/
+	margin-bottom: 5px;
+
+	background: #e3f0fa;
+	background-image: linear-gradient(to right, #e3f0fa 0%, #f9f9f9 90%);
+	background: -moz-linear-gradient(left, #e3f0fa 0%, #f9f9f9 90%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%, #e3f0fa), color-stop(90%, #f9f9f9));
+	background: -webkit-linear-gradient(left, #e3f0fa 0%, #f9f9f9 90%);
+	background: -o-linear-gradient(left, #e3f0fa 0%, #f9f9f9 90%);
+	background: -ms-linear-gradient(left, #e3f0fa 0%, #f9f9f9 90%);
+}
+
+#header .el-row {
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+#header .el-col {
+	border-radius: 4px;
+}
+
+#header .bg-purple-dark {
+	background: #99a9bf;
+}
+
+#header .bg-purple {
+	background: #d3dce6;
+}
+
+#header .bg-purple-light {
+	background: #e5e9f2;
+}
+
+#header .grid-content {
+	border-radius: 4px;
+	min-height: 36px;
+	line-height: 36px;
+}
+
+#header .welcome {
+	padding-left: 10px;
+	text-shadow: 1px 1px #fff;
+}
+
+#header .row-bg {
+	padding: 10px 0;
+	background-color: #f9fafc;
+}
+
+#header .Login {
+	text-align: right;
+}
+
+#header .topSearch {
+	text-align: right;
+}
+
+#header .LoginInput {
+	width: 150px;
+}
+
+.LoginInput .el-input__inner {
+	border-style: solid;
+	border-color: #000 #CCC #CCC #000;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EEE), to(#FFF));
+	background-image: -webkit-linear-gradient(#EEE 0%, #FFF 100%);
+	background-image: -moz-linear-gradient(#EEE 0%, #FFF 100%);
+	background-image: -ms-linear-gradient(#EEE 0%, #FFF 100%);
+	background-image: -o-linear-gradient(#EEE 0%, #FFF 100%);
+	background-image: linear-gradient(#EEE 0%, #FFF 100%);
+	color: #000;
+}
+
+#header .SearchClass {
+	margin-top: 7px;
+	width: 100px;
+}
+
+#header .seachInput {
+	width: 150px;
+	margin-right: 10px;
+}
+
+#header .el-button {
+	background-image: linear-gradient(#5899D7 0%, #255A8D 100%), -webkit-linear-gradient(#5899D7 0%, #255A8D 100%);
+	-webkit-appearance: none;
+	border-width: 1px;
+	border-style: outset;
+	border-color: #5899D7 #255A8D #255A8D #5899D7;
+	text-shadow: 1px 1px #000;
+}
+
+#header .seachIcon {
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	position: absolute;
+	top: 7px;
+	right: -11px;
+}
+
+#header .head-top .el-row .el-form-item {
+	margin-bottom: 0;
+}
+
+#header .head-top .el-form-item__label {
+	text-shadow: 1px 1px #fff;
+}
+
+/*head-main*/
+
+/* .head-main {
+	margin-bottom: 20px;
+} */
+
+.logo {
+	background: transparent;
+	text-align: center;
+}
+
+#logo {
+	height: 80px;
+	text-align: center;
+	line-height: 80px;
+	font-weight: bold;
+	font-size: 44px;
+	color: #333;
+}
+
+.nav {
+	list-style: none;
+	/* 去掉li的小黑点 */
+	margin-top: 40px;
+	float: right;
+	/* background-image: linear-gradient(#5899D7 0%, #255A8D 100%),-webkit-linear-gradient(#5899D7 0%, #255A8D 100%); */
+	background-color: white;
+}
+
+.nav li {
+	float: left;
+	font-size: 15px;
+	position: relative;
+	text-align: center;
+	width: 132px;
+
+}
+
+.nav li a {
+	/* 去掉li的下划线 */
+	text-decoration: none;
+	border-bottom: 3px solid transparent;
+	background-color: transparent;
+	color: #333333;
+	display: block;
+	/* text-shadow: -1px -1px 0 #0E2439; */
+	transition: all 300ms linear;
+	font-family: "Open Sans", sans-serif;
+	/* font-family: Georgia, "游明朝", "Yu Mincho", "游明朝体", YuMincho, "ヒラギノ明朝 Pro", "Hiragino Mincho ProN", "MS P明朝", "MS PMincho", HGS明朝E, "MS Mincho", serif; */
+}
+
+.nav li.submenu a {
+	padding: 0;
+}
+
+.nav li:hover {}
+
+.nav li:hover a {
+	/* 修改a标签 */
+	color: #FFA500;
+	/* background-color: #77A700; */
+}
+
+.nav li.submenu:hover .detailed {
+	display: block;
+}
+
+.nav li.submenu:hover .details {
+	display: block;
+}
+
+.nav li.submenu i {
+	position: absolute;
+	right: 10px;
+	top: 12px;
+	color: #fff;
+}
+
+.nav li.submenu .detail a {
+	font-size: 14px;
+	text-shadow: none;
+	color: #5899d7;
+	background-color: #fff;
+	border-bottom: none;
+	transition: none;
+}
+
+#header .nav li.submenu .details .detail:hover a {
+	/* color: #77a700; */
+	/* border-left-color:#77a700; */
+	/*background: #5899D7;*/
+	/*background-image:linear-gradient(#5899D7 0%, #255A8D 100%),-webkit-linear-gradient(#5899D7 0%, #255A8D 100%); */
+}
+
+.nav li.submenu .detailWrap .detail a {
+	display: block;
+	transition: all 300ms;
+	color: #5899d7;
+	border-bottom: 1px dashed #ddd;
+}
+
+.nav li.submenu .detailWrap .detail:hover a {
+	/* color: #77a700; */
+}
+
+.nav li.submenu .details .detail a {
+	border-left: 3px solid transparent;
+	border-bottom: 1px dashed #ddd;
+}
+
+.nav li.submenu .details .detail:last-child a {
+	border-bottom: none;
+}
+
+.nav li.submenu .details {
+	width: 118px;
+	position: absolute;
+	right: 0px;
+	top: 39px;
+	display: none;
+	border: 1px solid #5899D7;
+	text-align: center;
+	z-index: 3000;
+	background: #fff;
+}
+
+.nav li.submenu .detailed {
+	width: 640px;
+	position: absolute;
+	right: 0;
+	top: 39px;
+	display: none;
+	border: 1px solid #5899D7;
+	text-align: center;
+	z-index: 3000;
+	background: #fff;
+}
+
+.nav li.submenu .detailContent {
+	width: 640px;
+}
+
+.nav li.submenu .detailWrap {
+	width: 120px;
+	margin-right: 10px;
+	float: left;
+}
+
+.nav li.submenu .detailWrap:last-child {
+	margin-right: 0;
+}
+
+.nav li.submenu .detial {
+	width: 120px;
+}
+
+.nav li.submenu .title {
+	text-align: left;
+}
+
+.nav li.submenu .detailTitle {
+	border-bottom: 1px dashed #ddd;
+	font-size: 14px;
+	margin-right: 10px;
+	text-align: center;
+	width: 120px;
+	display: inline-block;
+	/*background: #77a700;*/
+	color: #5899d7;
+	font-weight: bold;
+	/*text-shadow: 0 1px 2px #000000;*/
+}
+
+.nav li.submenu .detailTitle:last-child {
+	margin-right: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+.mu-main-navbar .navbar-header {
+	height: 60px;
+}
+
+.mu-main-navbar .navbar-header .navbar-brand {
+	color: white;
+	display: inline-block;
+	font-weight: 700;
+	font-size: 25px;
+	padding: 0;
+	margin-top: 15px;
+	margin-left: 20px;
+	height: 30px;
+	width: 580px;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.mu-main-navbar .navbar-header .navbar-brand span {
+	color: #FFA500;
+	font-family: Georgia, "游明朝", "Yu Mincho", "游明朝体", YuMincho, "ヒラギノ明朝 Pro", "Hiragino Mincho ProN", "MS P明朝", "MS PMincho", HGS明朝E, "MS Mincho", serif;
+}
+
+/* nav左边 */
+/* .mu-main-navbar .navbar-header .navbar-brand img {
+	margin-top: -10px;
+} */
+
+
+/* .mu-main-navbar .navbar-header .navbar-brand {
+	height: 20px;
+	margin-top: 16px;
+	width: 105px;
+} */
+
+/* .mu-main-navbar .navbar-header .navbar-brand span {
+	margin-top: -4px;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+	background-color: transparent;
+} */

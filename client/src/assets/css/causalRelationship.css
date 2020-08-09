@@ -1,0 +1,199 @@
+.clearfix:after {
+    content: "\200b";
+    clear: both;
+    width: 0;
+    height: 0;
+}
+
+.MaterialDetail {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    margin-top: 0 !important;
+    margin-left: 130px;
+}
+
+.MaterialDetail .el-form .choose-box {
+    display: inline-block;
+}
+
+.MaterialDetail .el-form .choose-box .el-input {
+    width: 100px;
+}
+
+.MaterialDetail .el-form .choose-box+.choose-box {
+    margin-left: 20px;
+}
+
+.MaterialDetail .el-form .choose-box .label {
+    display: inline-block;
+    width: 70px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+
+.MaterialDetail .el-form .choose-box .line {
+    margin: 0 10px;
+}
+
+.MaterialDetail .el-form .rule-box .rule {
+    width: 70px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+}
+
+.MaterialDetail .el-form .rule-box .switch-box-wrap {
+    float: left;
+    width: 1000px;
+}
+
+.MaterialDetail .el-form .rule-box .switch-box-wrap .switch-box {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    width: 400px;
+}
+
+/*.MaterialDetail .el-form .rule-box .switch-box-wrap .switch-box+.switch-box {
+		margin-left: 50px;
+	}
+	
+	.MaterialDetail .el-form .rule-box .switch-box-wrap .switch-box:nth-child(3) {
+		margin-left: 0;
+	}
+	.MaterialDetail .el-form .rule-box .switch-box-wrap .switch-box:nth-child(n+3){
+		margin-top: 10px;
+	}*/
+.MaterialDetail .el-form .rule-box .switch-box-wrap .switch-box:nth-child(2n) {
+    margin-left: 50px;
+}
+
+/* .MaterialDetail .el-form .rule-box .switch-box-wrap .switch-box .num {
+		display: inline-block;
+		float: left;
+		margin-right: 15px;
+		width: 30px;
+	} */
+.MaterialDetail .el-form .rule-box .switch-box-wrap .switch-box .num {
+    display: inline-block;
+    float: left;
+    margin-right: 15px;
+    width: 30px;
+}
+
+.MaterialDetail .el-form .rule-box .switch-box-wrap .switch-box .label {
+    display: inline-block;
+    float: left;
+    width: 240px;
+    margin-right: 15px;
+}
+
+.MaterialDetail .el-form .rule-box .switch-box-wrap .switch-box .el-switch {
+    float: left;
+    margin: 10px 0;
+}
+
+.MaterialDetail .el-form .rule-box .switch-box-wrap .switch-box .el-color-picker {
+    float: left;
+    margin-left: 20px;
+}
+
+.MaterialDetail .el-form .facet .facet-title {
+    width: 70px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+}
+
+.MaterialDetail .el-form .facet .facet-list {
+    float: left;
+    width: 1000px;
+}
+
+.MaterialDetail .el-form .facet .facet-box {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+}
+
+.MaterialDetail .el-form .facet .facet-box:after {
+    content: "\200b";
+    clear: both;
+    width: 0;
+    height: 0;
+}
+
+.MaterialDetail .el-form .facet .facet-box+.facet-box {
+    margin-left: 20px;
+}
+
+.MaterialDetail .el-form .facet .facet-box:nth-child(3n + 1) {
+    margin-left: 0;
+}
+
+.MaterialDetail .el-form .facet .facet-box:nth-child(n + 4) {
+    margin-top: 10px;
+}
+
+.MaterialDetail .el-form .facet .facet-box .num {
+    display: inline-block;
+    text-align: center;
+    margin-right: 10px;
+    float: left;
+    width: 30px;
+}
+
+.MaterialDetail .el-form .facet .facet-box .label {
+    display: inline-block;
+    text-align: left;
+    width: 150px;
+    margin-right: 20px;
+    float: left;
+}
+
+.MaterialDetail .el-form .facet .facet-box .el-switch {
+    float: left;
+    margin: 10px 0;
+    margin-right: 20px;
+}
+
+.MaterialDetail .el-form .facet .facet-box .el-color-picker {
+    float: left;
+}
+
+.MaterialDetail .el-form .subbmit .el-form-item__content {
+    text-align: right;
+}
+
+.MaterialDetail .el-form .subbmit .el-form-item__content .el-button {
+    margin-right: 275px;
+}
+
+.MaterialDetail .el-form .facetInput {
+    float: left;
+    height: 28px;
+    width: 32px;
+    margin-right: 10px;
+}
+
+.MaterialDetail .el-form .facetInput input {
+    padding: 0 5px;
+    text-align: center;
+}
+
+.MaterialDetail .el-form .subbmit .el-form-item__content .gobackBtn {
+    margin-right: 20px;
+}
+
+/* .el-form-item__content {
+    background: #fafafa;
+    width: 80%;
+} */
+.bgStl {
+    background: #fafafa;
+    width: 80%;
+}

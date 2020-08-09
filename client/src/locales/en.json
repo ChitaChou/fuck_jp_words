@@ -1,0 +1,16 @@
+{
+  "message": {
+    "name": "name1",
+    "age": "age1"
+  },
+  "logout": {
+    "logout": "Logout",
+    "confirm": "Confirm",
+    "LogoutNoticeInfo": "Logout?",
+    "Yes": "Yes",
+    "No": "No"
+  },
+  "tabbar": {
+    "name": "CP4D demo"
+  }
+}

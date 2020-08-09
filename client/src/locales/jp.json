@@ -1,0 +1,16 @@
+{
+    "message": {
+        "name": "nameja",
+        "age": "ageja"
+    },
+    "logout": {
+        "logout": "ログアウト",
+        "confirm": "確認",
+        "LogoutNoticeInfo": "ログアウトします。よろしいですか？",
+        "Yes": "はい",
+        "No": "いいえ"
+    },
+    "tabbar": {
+        "name": "CP4D demo"
+    }
+}

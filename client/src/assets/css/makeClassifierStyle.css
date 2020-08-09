@@ -1,0 +1,36 @@
+.imgStyle {
+  width: 90%;
+}
+
+.btnImg {
+  z-index: -1;
+}
+
+.btnTitle {
+  /* position: relative; */
+  width: 80%;
+  background: #fff;
+  margin-top: -1em;
+  /* z-index: 1; */
+  padding: 1em;
+  font-family: Georgia, "\6E38\660E\671D", "Yu Mincho", "\6E38\660E\671D\4F53", YuMincho, "\30D2\30E9\30AE\30CE\660E\671D Pro", "Hiragino Mincho ProN", "MS P\660E\671D", "MS PMincho", HGS明朝E, "MS Mincho", serif;
+}
+
+.btnTitle h2 a {
+  font-family: Georgia, "\6E38\660E\671D", "Yu Mincho", "\6E38\660E\671D\4F53", YuMincho,
+    "\30D2\30E9\30AE\30CE\660E\671D Pro", "Hiragino Mincho ProN", "MS P\660E\671D", "MS PMincho", HGS明朝E, "MS Mincho",
+    serif;
+  color: gray;
+}
+
+.btnEntry .btnImg img {
+  position: relative;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
