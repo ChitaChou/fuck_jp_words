@@ -55,7 +55,7 @@ def index():
 # 添加词汇分组
 # 参数(json)：
 # 1. group_name (分组名称,必须)
-@app.route("/group", methods=['POST'])
+@app.route("/api/group", methods=['POST'])
 def add_group():
     if request.get_data(as_text=True) != '':
         para_json_obj = json.loads(request.get_data(as_text=True))
@@ -72,7 +72,7 @@ def add_group():
             return "add_success"
 
 # 获取全部词汇分组
-@app.route("/group", methods=['GET'])
+@app.route("/api/group", methods=['GET'])
 def get_group():
     sql = 'SELECT group_id, group_name, add_datetime, upd_datetime FROM "group"'
     conn = sqlite3.connect('data/core.db')
@@ -88,7 +88,7 @@ def get_group():
 # 1. words_jp (日语单词,必须)
 # 2. trans_cn (中文意思,必须)
 # 3. group_id (所在分组ID,必须)
-@app.route("/word", methods=['POST'])
+@app.route("/api/word", methods=['POST'])
 def add_word():
     if request.get_data(as_text=True) != '':
         para_json_obj = json.loads(request.get_data(as_text=True))
@@ -105,9 +105,9 @@ def add_word():
             return "add_success"
 
 # 获取全部单词
-@app.route("/word", methods=['GET'])
+@app.route("/api/word", methods=['GET'])
 def get_word():
-    sql = 'SELECT words_id, group_id, words_jp, trans_cn, add_datetime, upd_datetime FROM "words"'
+    sql = 'SELECT words_id, group_id, words_jp, trans_cn, add_datetime, upd_datetime FROM "words" order by upd_datetime DESC'
     conn = sqlite3.connect('data/core.db')
     c = conn.cursor()
     cursor = c.execute(sql)
@@ -119,7 +119,7 @@ def get_word():
 # 删除单词
 # 参数(json)：
 # 1. words_id (单词ID,必须)
-@app.route("/word", methods=['DELETE'])
+@app.route("/api/word", methods=['DELETE'])
 def del_word():
     if request.get_data(as_text=True) != '':
         para_json_obj = json.loads(request.get_data(as_text=True))
@@ -145,7 +145,7 @@ def del_word():
 # 参数(get url)：
 # 1. words_group (单词分组,必须)
 # 2. type (考试种类,必须,汉译日-1；日译汉-2)
-@app.route("/exam", methods=['GET'])
+@app.route("/api/exam", methods=['GET'])
 def create_exam():
     group = request.args.get("words_group")
     exam_type = request.args.get("type")
@@ -205,7 +205,7 @@ def create_exam():
 # 1. test_id (考试ID,必须)
 # 2. words_id (单词ID，必须)
 # 3. answer (答案，必须)
-@app.route("/exam", methods=['POST'])
+@app.route("/api/exam", methods=['POST'])
 def upd_answer():
     if request.get_data(as_text=True) != '':
         para_json_obj = json.loads(request.get_data(as_text=True))
@@ -231,7 +231,7 @@ def upd_answer():
 # 提交考试，打分记录成绩
 # 参数(json)
 # 1. test_id (考试ID,必须)
-@app.route("/exam_result", methods=['POST'])
+@app.route("/api/exam_result", methods=['POST'])
 def com_exam():
     if request.get_data(as_text=True) != '':
         para_json_obj = json.loads(request.get_data(as_text=True))
