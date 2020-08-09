@@ -33,7 +33,7 @@
 			</div>
         </div>
         <div class="ctrl-btn-container">
-			<div class="btn" @click="goTempScan">
+			<div class="btn" @click="goExam">
 				<div class="icon"><img src="../assets/image/test.png" height="80%" width="80%" alt=""></div>
 				<div class="text">去考试</div>
 			</div>
@@ -98,9 +98,9 @@ export default {
 				path: "/groups",
 			});
 		},
-		goTempScan() {
+		goExam() {
 			this.$router.push({
-				path: "/admin/scan",
+				path: "/exam",
 			});
 		},
 		goRiskTrace () {
