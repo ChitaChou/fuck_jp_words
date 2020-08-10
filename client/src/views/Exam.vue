@@ -102,14 +102,51 @@ export default {
                 cancelButtonText: '取消',
                 type: 'warning',
             }).then(() => {
+                var answer_data = [];
                 for (var i = 0; i< this.answer.length; i++){
-                    // 封装答案数据，并提交
+                    // 封装答案数据
+                    var temp = {
+                        "test_id": this.exam_id,
+                        "words_id": this.exam_data[i].words_id,
+                        "answer": this.answer[i]
+                    }
+                    answer_data[i] = temp;
                 }
-                this.$message({
-                    type: 'success',
-                    message: '交卷成功!'
-                });
-                this.goHome();
+                // 提交答案数据
+                this.$axios
+                    .post('/api/exam', answer_data)
+                    .then(res => {
+                        if(res.data == 'ans_success'){
+                            // 提交成功，获取分数
+                            var points_data = {
+                                "test_id": this.exam_id,
+                                "type": this.exam_type
+                            }
+                            this.$axios
+                            .post('/api/exam_result', points_data)
+                            .then(res => {
+                                if ('score' in res.data){
+                                    this.$message({
+                                        type: 'success',
+                                        message: '交卷成功!本次分数为'+res.data.score
+                                    });
+                                    this.goHome();
+                                }
+                                else{
+                                    alert('考试提交失败，请重试');
+                                }
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            });
+                        }
+                        else {
+                            alert('请检查参数');
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
             }).catch(() => {
                 
             });

@@ -220,7 +220,7 @@ def upd_answer():
                     sql_upd = 'UPDATE "main"."test_record" SET "answer" = \'' + str(item["answer"]) + '\', "ans_datetime" = '+ str(ans_time) +' WHERE "test_id" = '+ str(item["test_id"]) +' AND "words_id" = '+ str(item["words_id"])
                     c.execute(sql_upd)
                 conn.commit()
-                if conn.total_changes != len(para_json_obj):
+                if conn.total_changes == len(para_json_obj):
                     return "ans_success"
                 else:
                     return "ans_error"
@@ -232,15 +232,20 @@ def upd_answer():
 # 提交考试，打分记录成绩
 # 参数(json)
 # 1. test_id (考试ID,必须)
+# 2. type (考试种类,必须,汉译日-1；日译汉-2)
 @app.route("/api/exam_result", methods=['POST'])
 def com_exam():
     if request.get_data(as_text=True) != '':
         para_json_obj = json.loads(request.get_data(as_text=True))
-        if ("test_id" not in para_json_obj):
+        if ("test_id" not in para_json_obj or "type" not in para_json_obj):
             return "parameter_missing"
         else:
             com_time = int(time.time())
-            sql_get_points = 'SELECT (tr.answer = w.words_jp)*5 AS points FROM "test_record" tr INNER JOIN "words" w ON tr.words_id = w.words_id WHERE tr.test_id = '+ str(para_json_obj["test_id"])
+            sql_get_points = ''
+            if para_json_obj["type"] == 1:
+                sql_get_points = 'SELECT (tr.answer = w.words_jp)*5 AS points FROM "test_record" tr INNER JOIN "words" w ON tr.words_id = w.words_id WHERE tr.test_id = '+ str(para_json_obj["test_id"])
+            else:
+                sql_get_points = 'SELECT (tr.answer = w.trans_cn)*5 AS points FROM "test_record" tr INNER JOIN "words" w ON tr.words_id = w.words_id WHERE tr.test_id = '+ str(para_json_obj["test_id"])
             conn = sqlite3.connect('data/core.db')
             c = conn.cursor()
             try:
