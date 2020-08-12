@@ -305,7 +305,6 @@ def get_exam_detail():
         return "parameter_error"
     else:
         sql = 'SELECT tr.test_id, tr.record_id, tr.type, tr.words_id, tr.answer, w.words_jp, w.trans_cn, tr.add_datetime, tr.ans_datetime FROM "test_record" tr INNER JOIN "words" w ON tr.words_id = w.words_id where test_id = \''+test_id+'\''
-        print(sql)
         conn = sqlite3.connect('data/core.db')
         c = conn.cursor()
         cursor = c.execute(sql)
