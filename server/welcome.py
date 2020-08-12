@@ -42,6 +42,19 @@ class exam_result_obj:
         self.score = score
         self.finish_datetime = finish_datetime
 
+# 考试记录对象类，用于快速映射生成json对象
+class exam_record_obj:
+    def __init__(self, test_id, record_id, type, words_id, answer, words_jp, trans_cn, add_datetime, ans_datetime):
+        self.test_id = test_id
+        self.record_id = record_id
+        self.type = type
+        self.words_id = words_id
+        self.answer = answer
+        self.words_jp = words_jp
+        self.trans_cn = trans_cn
+        self.add_datetime = add_datetime
+        self.ans_datetime = ans_datetime
+
 # 工具类：时间戳转换日期文本
 def util_timestamp_2_date(timestamp):
     timeArray = time.localtime(int(timestamp))
@@ -268,6 +281,38 @@ def com_exam():
                 return "get result error:" + str(sys.exc_info()[0])
             finally:
                 conn.close()
+
+# 获取全部有成绩的考试历史记录
+@app.route("/api/exam_result", methods=['GET'])
+def get_exam():
+    sql = 'SELECT test_id, score, finish_datetime FROM "test_result"'
+    conn = sqlite3.connect('data/core.db')
+    c = conn.cursor()
+    cursor = c.execute(sql)
+    data_exams = []
+    for row in cursor:
+        data_exams.append(json.loads(json.dumps(exam_result_obj(row[0], row[1], util_timestamp_2_date(row[2])).__dict__, ensure_ascii=True)))
+    return json.dumps(data_exams)
+
+# 获取考试详细信息
+# 参数(get url)：
+# 1. test_id (考试ID,必须)
+@app.route("/api/exam_detail", methods=['GET'])
+def get_exam_detail():
+    test_id = request.args.get("test_id")
+    # 为空或缺少参数判断
+    if test_id == None or test_id == '':
+        return "parameter_error"
+    else:
+        sql = 'SELECT tr.test_id, tr.record_id, tr.type, tr.words_id, tr.answer, w.words_jp, w.trans_cn, tr.add_datetime, tr.ans_datetime FROM "test_record" tr INNER JOIN "words" w ON tr.words_id = w.words_id where test_id = \''+test_id+'\''
+        print(sql)
+        conn = sqlite3.connect('data/core.db')
+        c = conn.cursor()
+        cursor = c.execute(sql)
+        detail_data_exams = []
+        for row in cursor:
+            detail_data_exams.append(json.loads(json.dumps(exam_record_obj(row[0], row[1], row[2], row[3], row[4], row[5], row[6], util_timestamp_2_date(row[7]), util_timestamp_2_date(row[8])).__dict__, ensure_ascii=True)))
+        return json.dumps(detail_data_exams)
 
 if __name__ == '__main__':
     app.secret_key = os.urandom(24)

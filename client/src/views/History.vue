@@ -12,27 +12,33 @@
             </div>
             <div class="filter">
                 <div class="filter-item">
-                    <p class="notice">分组名称</p>
-                    <el-input type="text" class="input" v-model="group_name" auto-complete="off"></el-input>
+                    <p class="notice">分组</p>
+                    <el-select class="input" v-model="exam_id" placeholder="-">
+						<el-option v-for="(item, index) in exam_info" :key="index" :label="item.finish_datetime+' 分数:'+item.score" :value="item.test_id"></el-option>
+					</el-select>
                 </div>
-                <div class="filter-item"></div>
-                <div class="filter-item"></div>
                 <div class="filter-item"></div>
             </div>
             <div class="commit">
-                <div class="commit-btn"><el-button type="primary" size="mini" @click="addGroup" round>添加</el-button></div>
+                <div class="commit-btn"><el-button type="primary" size="mini" @click="getExamDetail" round>添加</el-button></div>
             </div>
         </div>
         <div class="info-container">
-            <div class="info-list" v-for="(item, index) in group_info" :key="index">
-                <div class="label1">序号</div>
-                <div class="text1">{{item.group_id}}</div>
-                <div class="label2">分组名称</div>
-                <div class="text2">{{item.group_name}}</div>
-                <div class="label3">添加时间</div>
-                <div class="text3">{{item.add_datetime}}</div>
-                <div class="label4"></div>
-                <div class="text4"></div>
+            <div class="info-list" v-for="(item, index) in exam_data" :key="index">
+                <div class="label1">类型</div>
+                <div class="text1" v-if="item.type == 1">汉译日</div>
+                <div class="text1" v-if="item.type == 2">日译汉</div>
+                <div class="label2">你的回答</div>
+                <div class="text2" style="color: green;" v-if="item.type == 1 && item.answer == item.words_jp">{{item.answer}}</div>
+                <div class="text2" style="color: red;" v-if="item.type == 1 && item.answer != item.words_jp">{{item.answer}}</div>
+                <div class="text2" style="color: green;" v-if="item.type == 2 && item.answer == item.trans_cn">{{item.answer}}</div>
+                <div class="text2" style="color: red;" v-if="item.type == 2 && item.answer != item.trans_cn">{{item.answer}}</div>
+                <div class="label3">日语</div>
+                <div class="text3" style="color: #108EE9;" v-if="item.type == 1">{{item.words_jp}}</div>
+                <div class="text3" v-if="item.type != 1">{{item.words_jp}}</div>
+                <div class="label4">汉语</div>
+                <div class="text4" style="color: #108EE9;" v-if="item.type == 2">{{item.trans_cn}}</div>
+                <div class="text4" v-if="item.type != 2">{{item.trans_cn}}</div>
             </div>
         </div>
     </div>
@@ -42,45 +48,31 @@ export default {
     data() {
         return {
             function_title: '考试历史',
-            group_name: '',
-            group_info: []
+            exam_id: '',
+            exam_info: [],
+            exam_data: []
         }
     },
     methods: {
-        getGroupInfo: function() {
+        getExamInfo: function() {
             this.$axios
-                .get('/api/group')
+                .get('/api/exam_result')
                 .then(res => {
-                    this.group_info = res.data;
+                    this.exam_info = res.data;
                 })
                 .catch(err => {
                     console.log(err);
                 });
         },
-        addGroup: function() {
-            if (this.group_name == '') {
-                alert('信息未填写完整');
-            }
-            else {
-                var group_data = {
-                    "group_name": this.group_name
-                };
-                this.$axios
-                .post('/api/group', group_data)
+        getExamDetail: function() {
+            this.$axios
+                .get('/api/exam_detail?test_id='+this.exam_id)
                 .then(res => {
-                    if(res.data == 'add_success'){
-                        alert('添加成功');
-                        this.group_name = '';
-                        this.getGroupInfo();
-                    }
-                    if(res.data == 'parameter_missing'){
-                        alert('请检查参数');
-                    }
+                    this.exam_data = res.data;
                 })
                 .catch(err => {
                     console.log(err);
                 });
-            }
         },
         goHome: function() {
             this.$router.push({
@@ -89,7 +81,7 @@ export default {
         }
     },
     mounted() {
-        this.getGroupInfo();
+        this.getExamInfo();
     }
 }
 </script>
@@ -146,7 +138,7 @@ export default {
     }
     
     .history .filter-container .filter .filter-item{
-        width: 50%;
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
         margin: 0 0 5px 0;
@@ -202,7 +194,7 @@ export default {
         color: grey;
 		font-size: 12px;
         display: flex;
-		justify-content: right;/*实现水平居中*/
+		justify-content: right;
 		align-items:center; /*实现垂直居中*/
     }
     .history .info-container .info-list .text1 {
@@ -220,7 +212,7 @@ export default {
         color: grey;
 		font-size: 12px;
         display: flex;
-		justify-content: right;/*实现水平居中*/
+		justify-content: right;
 		align-items:center; /*实现垂直居中*/
     }
     .history .info-container .info-list .text2 {
@@ -229,11 +221,11 @@ export default {
         color: black;
 		font-size: 12px;
         display: flex;
-		justify-content: right;/*实现水平居中*/
+		justify-content: center;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
     .history .info-container .info-list .label3 {
-        width: 30%;
+        width: 10%;
         height: 50%;
         color: grey;
 		font-size: 12px;
@@ -247,11 +239,11 @@ export default {
         color: black;
 		font-size: 12px;
         display: flex;
-		justify-content: right;/*实现水平居中*/
+		justify-content: center;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
     .history .info-container .info-list .label4 {
-        width: 15%;
+        width: 10%;
         height: 50%;
         color: grey;
 		font-size: 12px;
@@ -260,12 +252,12 @@ export default {
 		align-items:center; /*实现垂直居中*/
     }
     .history .info-container .info-list .text4 {
-        width: 15%;
+        width: 40%;
         height: 50%;
         color: black;
 		font-size: 12px;
         display: flex;
-		justify-content: right;/*实现水平居中*/
+		justify-content: center;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
 </style>
