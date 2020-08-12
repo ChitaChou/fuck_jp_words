@@ -1,5 +1,5 @@
 <template>
-    <div class="user-management-admin">
+    <div class="group">
         <div class="login-title-1" @click="goHome">
 			<b><i>Fuck JP Words</i></b>
 		</div>
@@ -94,11 +94,11 @@ export default {
 }
 </script>
 <style>
-    .user-management-admin {
+    .group {
         height: 100%;
         background-image: linear-gradient(to bottom , #108EE9, #FFFFFF);
 	}
-    .user-management-admin .login-title-1 {
+    .group .login-title-1 {
 		position: absolute;
 		width: fit-content;
 		top: 5px;
@@ -106,7 +106,7 @@ export default {
 		color: white;
 		font-size: 20px;
 	}
-	.user-management-admin .login-title-2 {
+	.group .login-title-2 {
 		position: absolute;
 		width: fit-content;
 		top: 5px;
@@ -114,7 +114,7 @@ export default {
 		color: white;
 		font-size: 20px;
 	}
-    .user-management-admin .filter-container {
+    .group .filter-container {
 		position: absolute;   
 		top: 18%;   
 		left: 50%;   
@@ -131,7 +131,7 @@ export default {
 		background: #fff;
 		background-clip: padding-box;
 	}
-    .user-management-admin .filter-container .title {
+    .group .filter-container .title {
         position: absolute;
 		width: fit-content;
 		top: 7px;
@@ -139,19 +139,19 @@ export default {
 		color: black;
 		font-size: 15px;
     }
-    .user-management-admin .filter-container .filter {
+    .group .filter-container .filter {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
     }
     
-    .user-management-admin .filter-container .filter .filter-item{
+    .group .filter-container .filter .filter-item{
         width: 50%;
         display: flex;
         flex-wrap: wrap;
         margin: 0 0 5px 0;
     }
-    .user-management-admin .filter-container .filter .filter-item .notice{
+    .group .filter-container .filter .filter-item .notice{
         width: 20%;
 		color: black;
 		font-size: 12px;
@@ -159,17 +159,17 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .user-management-admin .filter-container .filter .filter-item .input{
+    .group .filter-container .filter .filter-item .input{
         width: 80%;
         height: 60%;
     }
-    .user-management-admin .filter-container .commit .commit-btn{
+    .group .filter-container .commit .commit-btn{
         position: absolute;
 		width: fit-content;
 		bottom: 5px;
 		right: 20px;
     }
-    .user-management-admin .info-container {
+    .group .info-container {
 		position: absolute; 
 		display: flex;
         flex-wrap: wrap;  
@@ -188,7 +188,7 @@ export default {
 		background: #fff;
 		background-clip: padding-box;
 	}
-    .user-management-admin .info-container .info-list {
+    .group .info-container .info-list {
         width: 100%;
         height: 20%;
 		display: flex;
@@ -196,7 +196,7 @@ export default {
         border-bottom:1px dashed grey;
         margin: 0 5px 0 5px;
     }
-    .user-management-admin .info-container .info-list .label1 {
+    .group .info-container .info-list .label1 {
         width: 10%;
         height: 50%;
         color: grey;
@@ -205,7 +205,7 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .user-management-admin .info-container .info-list .text1 {
+    .group .info-container .info-list .text1 {
         width: 30%;
         height: 50%;
         color: black;
@@ -214,7 +214,7 @@ export default {
 		justify-content: center;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .user-management-admin .info-container .info-list .label2 {
+    .group .info-container .info-list .label2 {
         width: 20%;
         height: 50%;
         color: grey;
@@ -223,7 +223,7 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .user-management-admin .info-container .info-list .text2 {
+    .group .info-container .info-list .text2 {
         width: 40%;
         height: 50%;
         color: black;
@@ -232,7 +232,7 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .user-management-admin .info-container .info-list .label3 {
+    .group .info-container .info-list .label3 {
         width: 30%;
         height: 50%;
         color: grey;
@@ -241,7 +241,7 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .user-management-admin .info-container .info-list .text3 {
+    .group .info-container .info-list .text3 {
         width: 40%;
         height: 50%;
         color: black;
@@ -250,7 +250,7 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .user-management-admin .info-container .info-list .label4 {
+    .group .info-container .info-list .label4 {
         width: 15%;
         height: 50%;
         color: grey;
@@ -259,7 +259,7 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .user-management-admin .info-container .info-list .text4 {
+    .group .info-container .info-list .text4 {
         width: 15%;
         height: 50%;
         color: black;

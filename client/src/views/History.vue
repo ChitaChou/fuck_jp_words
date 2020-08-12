@@ -1,5 +1,5 @@
 <template>
-    <div class="words">
+    <div class="history">
         <div class="login-title-1" @click="goHome">
 			<b><i>Fuck JP Words</i></b>
 		</div>
@@ -12,35 +12,27 @@
             </div>
             <div class="filter">
                 <div class="filter-item">
-                    <p class="notice">单词</p>
-                    <el-input type="text" class="input" v-model="words_jp" auto-complete="off"></el-input>
+                    <p class="notice">分组名称</p>
+                    <el-input type="text" class="input" v-model="group_name" auto-complete="off"></el-input>
                 </div>
-                <div class="filter-item">
-                    <p class="notice">翻译</p>
-                    <el-input type="text" class="input" v-model="trans_cn" auto-complete="off"></el-input>
-                </div>
-                <div class="filter-item">
-                    <p class="notice">分组</p>
-                    <el-select class="input" v-model="group_id" placeholder="-">
-						<el-option v-for="(item, index) in group_info" :key="index" :label="item.group_name" :value="item.group_id"></el-option>
-					</el-select>
-                </div>
+                <div class="filter-item"></div>
+                <div class="filter-item"></div>
                 <div class="filter-item"></div>
             </div>
             <div class="commit">
-                <div class="commit-btn"><el-button type="primary" size="mini" @click="addWord" round>添加</el-button></div>
+                <div class="commit-btn"><el-button type="primary" size="mini" @click="addGroup" round>添加</el-button></div>
             </div>
         </div>
         <div class="info-container">
-            <div class="info-list" v-for="(item, index) in word_info" :key="index">
-                <div class="label1">单词</div>
-                <div class="text1">{{item.words_jp}}</div>
-                <div class="label2">翻译</div>
-                <div class="text2">{{item.trans_cn}}</div>
-                <div class="label3">分组</div>
-                <div class="text3">{{item.group_id}}</div>
-                <div class="label4">修改时间</div>
-                <div class="text4">{{item.upd_datetime}}</div>
+            <div class="info-list" v-for="(item, index) in group_info" :key="index">
+                <div class="label1">序号</div>
+                <div class="text1">{{item.group_id}}</div>
+                <div class="label2">分组名称</div>
+                <div class="text2">{{item.group_name}}</div>
+                <div class="label3">添加时间</div>
+                <div class="text3">{{item.add_datetime}}</div>
+                <div class="label4"></div>
+                <div class="text4"></div>
             </div>
         </div>
     </div>
@@ -49,25 +41,12 @@
 export default {
     data() {
         return {
-            function_title: '单词管理',
-            words_jp: '',
-            trans_cn: '',
-            group_id: '',
-            word_info: [],
+            function_title: '考试历史',
+            group_name: '',
             group_info: []
         }
     },
     methods: {
-        getWordInfo: function() {
-            this.$axios
-                .get('/api/word')
-                .then(res => {
-                    this.word_info = res.data;
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-        },
         getGroupInfo: function() {
             this.$axios
                 .get('/api/group')
@@ -78,25 +57,21 @@ export default {
                     console.log(err);
                 });
         },
-        addWord: function() {
-            if (this.words_jp == '' || this.trans_cn == '' || this.group_id == '') {
+        addGroup: function() {
+            if (this.group_name == '') {
                 alert('信息未填写完整');
             }
             else {
-                var words_data = {
-                    "words_jp": this.words_jp,
-                    "trans_cn": this.trans_cn,
-                    "group_id": this.group_id
+                var group_data = {
+                    "group_name": this.group_name
                 };
                 this.$axios
-                .post('/api/word', words_data)
+                .post('/api/group', group_data)
                 .then(res => {
                     if(res.data == 'add_success'){
                         alert('添加成功');
-                        this.words_jp = '';
-                        this.trans_cn = '';
-                        this.group_id = '';
-                        this.getWordInfo();
+                        this.group_name = '';
+                        this.getGroupInfo();
                     }
                     if(res.data == 'parameter_missing'){
                         alert('请检查参数');
@@ -114,17 +89,16 @@ export default {
         }
     },
     mounted() {
-        this.getWordInfo();
         this.getGroupInfo();
     }
 }
 </script>
 <style>
-    .words {
+    .history {
         height: 100%;
         background-image: linear-gradient(to bottom , #108EE9, #FFFFFF);
 	}
-    .words .login-title-1 {
+    .history .login-title-1 {
 		position: absolute;
 		width: fit-content;
 		top: 5px;
@@ -132,7 +106,7 @@ export default {
 		color: white;
 		font-size: 20px;
 	}
-	.words .login-title-2 {
+	.history .login-title-2 {
 		position: absolute;
 		width: fit-content;
 		top: 5px;
@@ -140,7 +114,7 @@ export default {
 		color: white;
 		font-size: 20px;
 	}
-    .words .filter-container {
+    .history .filter-container {
 		position: absolute;   
 		top: 18%;   
 		left: 50%;   
@@ -157,7 +131,7 @@ export default {
 		background: #fff;
 		background-clip: padding-box;
 	}
-    .words .filter-container .title {
+    .history .filter-container .title {
         position: absolute;
 		width: fit-content;
 		top: 7px;
@@ -165,19 +139,19 @@ export default {
 		color: black;
 		font-size: 15px;
     }
-    .words .filter-container .filter {
+    .history .filter-container .filter {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
     }
     
-    .words .filter-container .filter .filter-item{
+    .history .filter-container .filter .filter-item{
         width: 50%;
         display: flex;
         flex-wrap: wrap;
         margin: 0 0 5px 0;
     }
-    .words .filter-container .filter .filter-item .notice{
+    .history .filter-container .filter .filter-item .notice{
         width: 20%;
 		color: black;
 		font-size: 12px;
@@ -185,17 +159,17 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .words .filter-container .filter .filter-item .input{
+    .history .filter-container .filter .filter-item .input{
         width: 80%;
         height: 60%;
     }
-    .words .filter-container .commit .commit-btn{
+    .history .filter-container .commit .commit-btn{
         position: absolute;
 		width: fit-content;
 		bottom: 5px;
 		right: 20px;
     }
-    .words .info-container {
+    .history .info-container {
 		position: absolute; 
 		display: flex;
         flex-wrap: wrap;  
@@ -214,7 +188,7 @@ export default {
 		background: #fff;
 		background-clip: padding-box;
 	}
-    .words .info-container .info-list {
+    .history .info-container .info-list {
         width: 100%;
         height: 20%;
 		display: flex;
@@ -222,7 +196,7 @@ export default {
         border-bottom:1px dashed grey;
         margin: 0 5px 0 5px;
     }
-    .words .info-container .info-list .label1 {
+    .history .info-container .info-list .label1 {
         width: 10%;
         height: 50%;
         color: grey;
@@ -231,7 +205,7 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .words .info-container .info-list .text1 {
+    .history .info-container .info-list .text1 {
         width: 30%;
         height: 50%;
         color: black;
@@ -240,7 +214,7 @@ export default {
 		justify-content: center;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .words .info-container .info-list .label2 {
+    .history .info-container .info-list .label2 {
         width: 20%;
         height: 50%;
         color: grey;
@@ -249,7 +223,7 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .words .info-container .info-list .text2 {
+    .history .info-container .info-list .text2 {
         width: 40%;
         height: 50%;
         color: black;
@@ -258,26 +232,26 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .words .info-container .info-list .label3 {
-        width: 10%;
-        height: 50%;
-        color: grey;
-		font-size: 12px;
-        display: flex;
-		justify-content: right;/*实现水平居中*/
-		align-items:center; /*实现垂直居中*/
-    }
-    .words .info-container .info-list .text3 {
+    .history .info-container .info-list .label3 {
         width: 30%;
         height: 50%;
+        color: grey;
+		font-size: 12px;
+        display: flex;
+		justify-content: right;/*实现水平居中*/
+		align-items:center; /*实现垂直居中*/
+    }
+    .history .info-container .info-list .text3 {
+        width: 40%;
+        height: 50%;
         color: black;
 		font-size: 12px;
         display: flex;
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .words .info-container .info-list .label4 {
-        width: 20%;
+    .history .info-container .info-list .label4 {
+        width: 15%;
         height: 50%;
         color: grey;
 		font-size: 12px;
@@ -285,8 +259,8 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .words .info-container .info-list .text4 {
-        width: 40%;
+    .history .info-container .info-list .text4 {
+        width: 15%;
         height: 50%;
         color: black;
 		font-size: 12px;

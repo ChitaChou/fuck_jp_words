@@ -2,6 +2,7 @@ import Menu from "@/views/Menu"
 import Words from "@/views/Words"
 import Groups from "@/views/Groups"
 import Exam from "@/views/Exam"
+import History from "@/views/History"
 
 export const pagesRoutes = [
   
@@ -35,5 +36,11 @@ export default [
     name: "Exam",
     hidden: true,
     component: Exam
+  },
+  {
+    path: "/history",
+    name: "History",
+    hidden: true,
+    component: History
   }
 ];

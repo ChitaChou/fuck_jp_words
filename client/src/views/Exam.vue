@@ -1,5 +1,5 @@
 <template>
-    <div class="user-management-admin">
+    <div class="exam">
         <div class="login-title-1" @click="goHome">
 			<b><i>正在考试中</i></b>
 		</div>
@@ -163,11 +163,11 @@ export default {
 }
 </script>
 <style>
-    .user-management-admin {
+    .exam {
         height: 100%;
         background-image: linear-gradient(to bottom , #108EE9, #FFFFFF);
 	}
-    .user-management-admin .login-title-1 {
+    .exam .login-title-1 {
 		position: absolute;
 		width: fit-content;
 		top: 5px;
@@ -175,7 +175,7 @@ export default {
 		color: white;
 		font-size: 20px;
 	}
-	.user-management-admin .login-title-2 {
+	.exam .login-title-2 {
 		position: absolute;
 		width: fit-content;
 		top: 5px;
@@ -183,7 +183,7 @@ export default {
 		color: white;
 		font-size: 20px;
 	}
-    .user-management-admin .info-container {
+    .exam .info-container {
 		position: absolute; 
 		display: flex;
         flex-wrap: wrap;  
@@ -202,7 +202,7 @@ export default {
 		background: #fff;
 		background-clip: padding-box;
 	}
-    .user-management-admin .info-container .info-list {
+    .exam .info-container .info-list {
         width: 100%;
         height: 15%;
 		display: flex;
@@ -210,7 +210,7 @@ export default {
         border-bottom:1px dashed grey;
         margin: 0 5px 0 5px;
     }
-    .user-management-admin .info-container .info-list .label1 {
+    .exam .info-container .info-list .label1 {
         width: 10%;
         height: 50%;
         color: grey;
@@ -219,7 +219,7 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .user-management-admin .info-container .info-list .text1 {
+    .exam .info-container .info-list .text1 {
         width: 30%;
         height: 50%;
         color: black;
@@ -228,7 +228,7 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .user-management-admin .info-container .info-list .label2 {
+    .exam .info-container .info-list .label2 {
         width: 20%;
         height: 50%;
         color: grey;
@@ -237,7 +237,7 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .user-management-admin .info-container .info-list .text2 {
+    .exam .info-container .info-list .text2 {
         width: 40%;
         height: 50%;
         color: black;
@@ -246,7 +246,7 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .user-management-admin .info-container .info-list .label3 {
+    .exam .info-container .info-list .label3 {
         width: 10%;
         height: 50%;
         color: grey;
@@ -255,7 +255,7 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .user-management-admin .info-container .info-list .text3 {
+    .exam .info-container .info-list .text3 {
         width: 30%;
         height: 50%;
         color: black;
@@ -264,7 +264,7 @@ export default {
 		justify-content: center;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .user-management-admin .info-container .info-list .label4 {
+    .exam .info-container .info-list .label4 {
         width: 20%;
         height: 50%;
         color: grey;
@@ -273,7 +273,7 @@ export default {
 		justify-content: right;/*实现水平居中*/
 		align-items:center; /*实现垂直居中*/
     }
-    .user-management-admin .info-container .info-list .text4 {
+    .exam .info-container .info-list .text4 {
         width: 40%;
         height: 50%;
         color: black;

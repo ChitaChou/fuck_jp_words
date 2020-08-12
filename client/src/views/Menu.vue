@@ -1,5 +1,5 @@
 <template>
-    <div class="home-page-admin">
+    <div class="menu">
         <div class="login-title-1">
 			<b><i>Fuck JP Words</i></b>
 		</div>
@@ -37,7 +37,7 @@
 				<div class="icon"><img src="../assets/image/test.png" height="80%" width="80%" alt=""></div>
 				<div class="text">去考试</div>
 			</div>
-			<div class="btn" @click="goRiskTrace">
+			<div class="btn" @click="goHistory">
 				<div class="icon"><img src="../assets/image/history.png" height="80%" width="80%" alt=""></div>
 				<div class="text">考试历史</div>
 			</div>
@@ -49,7 +49,7 @@
 				<div class="icon"><img src="../assets/image/group.png" height="80%" width="80%" alt=""></div>
 				<div class="text">单词分组管理</div>
 			</div>
-			<div class="btn" @click="exit">
+			<div class="btn">
 				<div class="icon"></div>
 				<div class="text"></div>
 			</div>
@@ -103,9 +103,9 @@ export default {
 				path: "/exam",
 			});
 		},
-		goRiskTrace () {
+		goHistory () {
 			this.$router.push({
-				path: "/admin/risk_trace",
+				path: "/history",
 			});
 		}
 	},
@@ -114,12 +114,12 @@ export default {
 }
 </script>
 <style>
-    .home-page-admin {
+    .menu {
         height: 100%;
         background-image: linear-gradient(to bottom , #108EE9, #FFFFFF);
 	}
 
-    .home-page-admin .login-title-1 {
+    .menu .login-title-1 {
 		position: absolute;
 		width: fit-content;
 		top: 5px;
@@ -128,7 +128,7 @@ export default {
 		font-size: 20px;
 	}
 
-	.home-page-admin .login-title-2 {
+	.menu .login-title-2 {
 		position: absolute;
 		width: fit-content;
 		top: 5px;
@@ -137,7 +137,7 @@ export default {
 		font-size: 20px;
 	}
 
-    .home-page-admin .person-container {
+    .menu .person-container {
 		position: absolute; 
 		display: flex;
         flex-wrap: wrap;  
@@ -157,35 +157,35 @@ export default {
 		background-clip: padding-box;
 	}
 
-	.home-page-admin .person-container .avatar {
+	.menu .person-container .avatar {
 		width: 30%;
 		height: 60%;
 		vertical-align: middle;
 		text-align: center;
 	}
 
-	.home-page-admin .person-container .person-info {
+	.menu .person-container .person-info {
 		width: 70%;
 		height: 60%;
 		display: flex;
         flex-wrap: wrap;
 	}
 
-	.home-page-admin .person-container .person-info .person-name1{
+	.menu .person-container .person-info .person-name1{
 		width: 100%;
 		height: 10%;
 		font-size: 17px;
 		text-align: left;
 	}
 
-	.home-page-admin .person-container .person-info .person-name{
+	.menu .person-container .person-info .person-name{
 		width: 100%;
 		height: 40%;
 		font-size: 17px;
 		text-align: left;
 	}
 
-	.home-page-admin .person-container .person-info .person-comment{
+	.menu .person-container .person-info .person-comment{
 		width: 100%;
 		height: 50%;
 		font-size: 12px;
@@ -194,12 +194,12 @@ export default {
 		vertical-align:middle;
 	}
 
-	.home-page-admin .person-container .status{
+	.menu .person-container .status{
 		width: 25%;
 		height: 40%;
 	}
 
-	.home-page-admin .person-container .status .num{
+	.menu .person-container .status .num{
 		width: 100%;
 		height: 70%;
 		color: red;
@@ -209,14 +209,14 @@ export default {
 		align-items:center; /*实现垂直居中*/
 	}
 
-	.home-page-admin .person-container .status .text{
+	.menu .person-container .status .text{
 		width: 100%;
 		height: 30%;
 		text-align: center;
 		vertical-align:middle;
 	}
 
-    .home-page-admin .ctrl-btn-container {
+    .menu .ctrl-btn-container {
 		position: absolute; 
 		display: flex;
         flex-wrap: wrap;  
@@ -236,7 +236,7 @@ export default {
 		background-clip: padding-box;
 	}
 
-	.home-page-admin .ctrl-btn-container .btn {
+	.menu .ctrl-btn-container .btn {
 		width: 50%;
 		height: 20%;
 		display: flex;
@@ -247,12 +247,12 @@ export default {
 		font-size: 0;
 	}
 
-	.home-page-admin .ctrl-btn-container .btn .icon {
+	.menu .ctrl-btn-container .btn .icon {
 		width: 30%;
 		text-align: center;
 	}
 
-	.home-page-admin .ctrl-btn-container .btn .text {
+	.menu .ctrl-btn-container .btn .text {
 		width: 70%;
 		font-size: 16px;
 		display: flex;
